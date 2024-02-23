@@ -1,0 +1,116 @@
+public abstract class Employee {
+	
+	// 1. 필드
+	public String name;
+	public String job;
+	public int empNo;
+	public int pay;
+	
+	// 2. 생성자
+	public Employee(String name, int empNo, String job, int pay) {
+		this.name = name;
+		this.empNo = empNo;
+		this.job = job;
+		this.pay = pay;
+	}
+	
+	// 3. 메서드
+	public void a() {System.out.println(this.name+"의 직책은 " + this.job + " 사원 번호는 " + this.empNo + "입니다.");}
+	public void b() {System.out.println("프로젝트를 개발하고 있습니다.");}
+	
+	// 4.추상 메서드
+	public abstract void jr();
+	public abstract void pj();
+	public abstract void sj();
+}
+
+
+public class Tom extends Employee {
+
+	public Tom(String name, int empNo, String job, int pay) {
+		super(name, empNo, job, pay);
+	}
+
+	@Override
+	public void jr() {
+		System.out.println("Java 개발을 하고 있습니다.");
+		
+	}
+
+	@Override
+	public void pj() {
+		System.out.println("Python 개발을 하고 있습니다.");
+		
+	}
+
+	@Override
+	public void sj() {
+		System.out.println("내년에 승진입니다.");
+	}
+}
+
+
+
+package ex01;
+
+public class James extends Employee {
+
+	public James(String name, int empNo, String job, int pay) {
+		super(name, empNo, job, pay);
+	}
+
+	@Override
+	public void jr() {
+		System.out.println("React 개발을 하고 있습니다.");
+		
+	}
+
+	@Override
+	public void pj() {
+		System.out.println("Java Script 개발을 하고 있습니다.");
+		
+	}
+
+	@Override
+	public void sj() {
+		System.out.println("내년에 승진하지 못합니다.");
+		
+	}
+
+	
+
+}
+
+
+
+package ex01;
+
+public class Main {
+
+	public static void main(String[] args) {
+		
+		Tom son = new Tom("손흥민", 120, "과장", 3000000);
+		son.a();
+		son.b();
+		son.jr();
+		son.pj();
+		son.sj();
+		System.out.println(son.job + "의 월급은 " + son.pay + "원 입니다.");
+		
+		System.out.println("----------------------------------------------");
+		
+		James kim = new James("김민재", 127, "대리", 2000000);
+		kim.a();
+		kim.b();
+		kim.jr();
+		kim.pj();
+		kim.sj();
+		System.out.println(kim.job + "의 월급은 " + kim.pay + "원 입니다.");
+		
+	}
+
+}
+
+
+ 
+	
