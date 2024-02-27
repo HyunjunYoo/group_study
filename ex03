@@ -1,0 +1,94 @@
+1. Shape class---------------------------------------------------------
+package ex03;
+
+public interface Shape {
+	
+	//넓이를 계산하는 메서드
+    double area();
+}
+
+
+2. Rectangle class-----------------------------------------------------
+package ex03;
+
+public class Rectangle implements Shape {
+
+	// 접근 제어자 private를 활용한 변수선언
+	private double width;
+	private double heigth;
+	
+	//생성자
+	public Rectangle(double width, double heigth) {
+		super();
+		this.width = width;
+		this.heigth = heigth;
+	}
+
+	//인터페이스 구현
+	@Override
+	public double area() {
+		double area = width * heigth;
+		System.out.printf("사각형의 넓이는 %.2f㎤ 입니다.", area);
+		System.out.println();
+		return area;
+	}
+
+	//일반메서드
+	// 1. 사각형의 둘레
+	public  void round() {
+		double round = (width + heigth) * 2;
+		System.out.printf("사각형의 둘레는 %.2f㎠ 입니다.", round);
+		System.out.println();	
+	}
+}
+
+
+3. Circle class--------------------------------------------------------
+package ex03;
+
+public class Circle implements Shape {
+
+	// 접근 제어자 private를 활용한 변수선언
+	private double radius;
+	
+	//생성자
+	public Circle(double radius) {
+		super();
+		this.radius = radius;
+	}
+
+	//인터페이스 구현
+	@Override
+	public double area() {
+		double area = Math.PI * radius * radius;
+		System.out.printf("원의 넓이는 %.2f㎤ 입니다. ", area);
+		System.out.println();
+		return area;
+	}
+	
+	//일반메서드
+		// 1. 사각형의 둘레
+		public  void round() {
+			double round = 2 * Math.PI * radius;
+			System.out.printf("원의 둘레는 %.2f㎠ 입니다. ",round);
+			System.out.println();		
+		}
+}
+
+
+4. Main class-----------------------------------------------------------
+package ex03;
+
+public class Main {
+	public static void main(String[] args) {
+	
+	Circle crc = new Circle(10);
+	crc.area();
+	crc.round();
+
+	Rectangle rec = new Rectangle(10, 10);
+	rec.area();
+	rec.round();
+	
+	}
+}
