@@ -1,0 +1,45 @@
+1. Product Class
+class Product{
+	private int mNum = 1199, mPrice = 0;
+	private String mName = null, mWhere;
+	private static int count = 0;
+
+	public Product(String prduct, String com, int price) {
+		this.mName = prduct;
+		this.mWhere = com;
+		this.mPrice = price;
+		count += 1;
+		mNum += count;}
+	public static int getCount() {
+			return count;}
+	@Override
+	public String toString() {
+		return mNum + "." + "   " + mName +  "   " + mWhere + "   " + mPrice + "원";
+	}	}
+
+
+2. Main Class
+public class Static {
+	public static void main(String[] args) {
+		
+	Product pro = new Product("포카칩", "오리온", 1900);
+	Product pro1 = new Product("프링글스", "켈라노바", 2900);
+	Product pro2 = new Product("수미칩", "농심", 1900);
+	
+	System.out.println(pro.toString());
+	System.out.println(pro1.toString());
+	System.out.println(pro2.toString());
+
+	System.out.println("------------------------------------");
+	System.out.println("출고 상품 : " + Product.getCount() + "건");
+	}
+}
+
+
+3. 출력문
+1200.   포카칩   오리온   1900원
+1201.   프링글스   켈라노바   2900원
+1202.   수미칩   농심   1900원
+------------------------------------
+출고 상품 : 3건
+
