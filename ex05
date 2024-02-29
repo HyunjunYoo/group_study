@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stopwatch</title>
+</head>
+<body>
+    <div id="stopWatch">00:00.00</div>
+    <button onclick="start()">Start</button>
+    <button onclick="stop()">Stop</button>
+    <button onclick="reset()">Reset</button>
+    <script>
+        let timerStart;
+        let mm = 0;
+        let ss = 0;
+        let ms = 0;
+        const stopWatch = document.getElementById('stopWatch');
+        
+        function start() {
+            clearInterval(timerStart);
+            timerStart = setInterval(function() {
+                ms++;
+                if (ms >= 100) {
+                    ms = 0;
+                    ss++;
+                }
+                if (ss >= 60) {
+                    ss = 0;
+                    mm++;
+                }
+                stopWatch.innerText = zeroFill(mm) + ':' + zeroFill(ss) + '.' + zeroFill(ms);
+            }, 10);
+        }
+        
+        function stop() {
+            clearInterval(timerStart);
+        }
+
+        function reset() {
+            clearInterval(timerStart);
+            mm = 0;
+            ss = 0;
+            ms = 0;
+            stopWatch.innerText = '00:00.00';
+        }
+
+        function zeroFill(num) {
+            return num < 10 ? '0' + num : num;
+        }
+    </script>
+</body>
+</html>
