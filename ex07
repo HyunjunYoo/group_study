@@ -39,7 +39,7 @@
   · Person class에는 멤버변수 및 getter and setter만 입력    
     private String name
     private int age
-	  private String tel
+    private String tel
     getName setName, getAge setName, getTel setTel
 
   · PersonMain에는 메뉴 구현
