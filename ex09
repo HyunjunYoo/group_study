@@ -1,0 +1,33 @@
+public class ex09 {
+
+	public static void main(String[] args) {
+		int com = (int) (Math.random()*6)+1;
+		int count = 0;
+		int userinput;
+		
+		try {
+			while(true) {
+				userinput = userinput();
+				if(com == userinput) {
+					System.out.println("정답입니다!");
+					System.out.println("컴퓨터가 고른 숫자 : " + com);
+					System.out.println("시도 횟수 : " + count);
+					break;
+				} else if (com != userinput) {
+					count++;
+				}//if end
+			}//while end
+			
+		} catch (Exception e) {
+			System.out.println("숫자가 아닙니다!");	
+		}//try end
+	}//Main end
+
+	
+	private static int userinput() {
+		System.out.print("1이상 6이하의 정수를 입력하세오 >>");
+		Scanner sc = new Scanner(System.in);
+		int userinput = sc.nextInt();
+		return userinput;
+	}
+}
