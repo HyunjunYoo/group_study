@@ -1,0 +1,84 @@
+1. Main
+public class Main {
+
+    public static void main(String[] args) {
+    	Scanner sc = new Scanner(System.in);
+    	
+    	// 각각의 클래스 출력
+    	win wn = new win();
+    	lose ls = new lose();
+    	drow dr = new drow();
+    	
+    	System.out.println("============ 묵 찌 빠 ==============");
+    	System.out.println("(종료를 원하면 \"그만\"을 입력하세요)");
+    		
+    	while(true) {
+   			// 컴퓨터 입력
+    		int s = (int)(Math.random()*3);
+   			String[] z = {"묵","찌","빠"};
+   			
+    		// 사용자 입력
+    		System.out.print("나 -> ");
+    		String a = sc.next();
+    		
+    		// 종료 시 승점을 출력
+    			if(a.equals("그만")) {
+    				System.out.println(wn.ww + "승 " + dr.dd + "무 " + ls.ll + "패 ");
+    				break;
+    			} // if end
+    		
+    		// 컴퓨터와 사용자 값 비교 클래스 출력
+    		wn.wwin(a, z[s]);
+    		ls.llose(a, z[s]);
+    		dr.ddrow(a, z[s]);
+    		
+    		} // while end
+    }
+}
+
+
+2. win class
+public class win {
+	public int ww=0;
+	
+	
+	public void wwin(String user, String com) {
+		if((user.equals("묵") && com.equals("찌"))
+		|| (user.equals("찌") && com.equals("빠"))
+		|| (user.equals("빠") && com.equals("묵"))) {
+			System.out.println("컴퓨터 -> " + com);
+			System.out.println("이겼습니다!");
+			ww++;		
+		} 
+	}	
+}
+
+
+3. lose class
+public class lose {
+	public int ll = 0;
+	
+	public void llose(String user, String com) {
+		if((user.equals("묵") && com.equals("빠"))
+		|| (user.equals("찌") && com.equals("묵"))
+		|| (user.equals("빠") && com.equals("찌"))) {
+			System.out.println("컴퓨터 -> " + com);
+			System.out.println("졌습니다!");
+			ll++;
+		}
+	}
+}
+
+
+4. drow class
+public class drow {
+	int dd = 0;
+	
+	public void ddrow(String user, String com) {
+		if(user.equals(com)) {
+			System.out.println("컴퓨터 -> " + com);
+			System.out.println("비겼습니다!");
+			dd++;
+		}
+	}
+}
