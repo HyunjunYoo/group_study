@@ -30,7 +30,7 @@
         }
         start()
         span.onclick = () => { // 클릭하면 시간각겨을 제거하여 텍스트의 회전을 멈춤
-        	clearInterval(startSpin);
+        	clearInterval(startSpin); 
         }
     </script>
 </body>
