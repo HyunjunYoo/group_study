@@ -26,10 +26,10 @@
         function start() {
         	startSpin = setInterval(() => {  1초마다 span요소의 텍스트를 회전시키는 기능을 수행
         		span.innerText = span.innerText.substr(1,span.innerText.length-1) + span.innerText.substr(0,1);
-        	}, 1000)
+        	}, 1000) // substr메서드는 문자열의 일부분을 잘라내어 반환하는 역할을 수행
         }
         start()
-        span.onclick = () => {
+        span.onclick = () => { // 클릭하면 시간각겨을 제거하여 텍스트의 회전을 멈춤
         	clearInterval(startSpin);
         }
     </script>
