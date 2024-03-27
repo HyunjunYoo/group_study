@@ -1,0 +1,43 @@
+#조건1
+import sqlite3
+
+def mysql():
+    conn = MySQLdb.connect(host='localhost',port='3308',db='study',user='root',password='12345')
+    cursor = conn.connect()
+
+    sql =  "SELECT id, name, age, addr FROM your_table_name WHERE name LIKE '%영%' AND age >= 25"
+    cursor.execute(sql, (name,age))
+
+    books = cursor.fetchall()
+
+    ##출력문
+    for book in books:
+        print(books)
+
+    cursor.close()
+    conn.close()
+        
+mysql_con1("영",25)    
+cursor.close()
+conn.close()
+
+
+
+#조건2
+import sqlite3
+
+conn = sqlite3.connect('./data/study.db')
+cursor = conn.cursor()
+
+
+sql = "SELECT id, name, age, addr FROM your_table_name WHERE age BETWEEN ? AND ? AND addr IN (?, ?) ORDER BY age DESC"
+
+cursor.execute(sql, (20,30,'서울','부산'))
+suppliers = cursor.fetchall()
+
+##출력문
+for supplier in suppliers:
+    print(supplier)
+
+cursor.close()
+conn.close()  
