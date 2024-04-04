@@ -1,0 +1,57 @@
+import pandas as pd
+
+datafile = pd.read_csv('./data/한국언론진흥재단_뉴스빅데이터_연도 및 과목별 언론의 수능난이도 평가_20221231.csv', encoding='utf-8', delimiter=',')
+
+# 데이터 확인
+display(datafile.head())
+print(type(datafile))
+
+# 국어(korean)/수학(math)/ 영어(english) 과목 별로 따로 데이터를 저장하기
+# display(korean)
+korean = datafile[datafile.과목 == '국어']
+display(korean)
+
+# display(math)
+math = datafile[datafile.과목 == '수학']
+display(math)
+
+# english = # display(english)
+english = datafile[datafile.과목 == '영어']
+display(english)
+
+# '보도 기사 수'가 많을 수록 난이도가 어렵다고 가정할때,  
+# 1) 국어가 가장 어려웠던 연도와 가장 쉬웠던 연도의 정보를 구하라
+# (해당 연도의 모든 정보 : 연도, 과목, 보도 기사 수, 언론의 추정 난이도 평균, 언론의 추정 난이도 표준편차에 대한 정보들)
+
+# 출력문 예시)
+#	  연도	과목	보도 기사 수	언론의 추정 난이도 평균	언론의 추정 난이도 표준편차
+# 3	2014	국어	142	0.647887	0.573618
+
+
+# 1-1) 국어가 가장 어려웠던 연도
+korean_hard = korean.sort_values(['보도 기사 수'], ascending=False).head(1)
+display(korean_hard['연도'])
+
+# 1-2) 국어가 가장 쉬웠던 연도의 정보
+korean_easy = korean.sort_values(['보도 기사 수'], ascending=True).head(1)
+display(korean_easy)
+
+# 2) 수학이 가장 어려웠던 연도와 가장 쉬웠던 연도의 정보를 구하라
+# (해당 연도의 모든 정보 : 연도, 과목, 보도 기사 수, 언론의 추정 난이도 평균, 언론의 추정 난이도 표준편차에 대한 정보들)
+# 2-1) 수학이 가장 어려웠던 연도
+math_hard = math.sort_values(['보도 기사 수'], ascending=False).head(1)
+display(math_hard['연도'])
+
+# 2-2) 수학이 가장 쉬웠던 연도의 정보
+math_easy = math.sort_values(['보도 기사 수'], ascending=True).head(1)
+display(math_easy)
+
+# 3) 영어가 가장 어려웠던 연도와 가장 쉬웠던 연도의 정보를 구하라
+# (해당 연도의 모든 정보 : 연도, 과목, 보도 기사 수, 언론의 추정 난이도 평균, 언론의 추정 난이도 표준편차에 대한 정보들)
+# 3-1) 영어가 가장 어려웠던 연도
+english_hard = english.sort_values(['보도 기사 수'], ascending=False).head(1)
+display(english_hard['연도'])
+
+# 3-2) 영어가 가장 쉬웠던 연도의 정보
+english_easy = english.sort_values(['보도 기사 수'], ascending=True).head(1)
+display(english_easy)
