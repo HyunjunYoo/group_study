@@ -1,0 +1,40 @@
+# 필요한 라이브러리와 모듈을 import한다.
+from bs4 import BeautifulSoup as bs
+from urllib.parse import quote
+from urllib.request import urlopen
+import json
+
+
+# 빌보드차트페이지의 URL을 지정한다.
+url = f'https://www.billboard.com/charts/hot-100/'
+
+# 지정된 URL의 HTML콘텐츠를 가져온다.
+html = urlopen(url)
+# beautifulSoup객체를 생성하여 HTML콘텐츠를 가져온다.
+soup = bs(html, 'html.parser')
+
+# 각 노래정보다 담긴 HTML요소를 선택한다.
+lists = soup.find('div',{'class':'chart-results-list'}).find_all('div',{'class':'o-chart-results-list-row-container'})
+
+# 노래정도를 저장할 리스트를 생성한다.
+data = []
+
+
+for items in lists:
+    # 노래재목 추출
+    title = items.find('h3',{'class':'c-title'}).string.strip()
+    # 아티스트 이름 추출
+    artist = items.find('h3',{'class':'c-title'}).find_next().string.strip()
+
+    # 노래제목과 아티스트 이름을 딕셔너리로 만든다.
+    song_info = {
+        "title": title,
+        "artist": artist
+    }
+
+    # data리스트에 song_info 딕셔너리를 추가한다.
+    data.append(song_info)
+
+# data리스트를 JSON파일로 저장한다.
+with open('Ex01.json', 'w') as f:
+    json.dump(data, f)
