@@ -60,6 +60,54 @@ from sklearn import metrics
 
 
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 # 1. 데이터 가져오기(힌트 : pandas와 matplotlib을 import해서 엑셀파일 불러오기)
 df = pd.read_csv('./data/bmi_500.csv', index_col='Label')
 print(df.head(), df.index.unique())
