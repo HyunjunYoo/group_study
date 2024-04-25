@@ -1,0 +1,24 @@
+rom turtle import *
+
+speed(0)
+colors = ['red','green','blue']
+pensize(2)
+degree = 2
+
+for i in range(1,500):
+    pencolor(colors[i%3])
+    forward(i)
+    left(90+degree)
+
+mainloop()
+
+import turtle as t
+ 
+n = 60    # 원의 갯수
+t.shape('turtle') 
+t.speed('fastest')      
+for i in range(n):
+    t.circle(120)      
+    t.right(360 / n)
+    
+mainloop()
