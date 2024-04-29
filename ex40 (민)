@@ -6,7 +6,7 @@
 # 1. Hello Flask 출력 & Login Form 출력
 from flask import Flask
 
-app = Flask(__name__)
+app = Flask(__name__) 
 
 # https://localhost:5000/
 @app.route('/')
